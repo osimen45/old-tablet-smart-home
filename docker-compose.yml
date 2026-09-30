@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:stable
+    privileged: true
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./config/homeassistant:/config
+      - /etc/localtime:/etc/localtime:ro
+
+  frigate:
+    image: ghcr.io/blakeblackshear/frigate:stable
+    privileged: true
+    restart: unless-stopped
+    shm_size: "64mb"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./config/frigate.yml:/config/config.yml
+      - /mnt/usb-depo:/media/frigate
+    ports:
+      - "5000:5000"
+      - "8554:8554"
