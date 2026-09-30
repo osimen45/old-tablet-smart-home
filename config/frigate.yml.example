@@ -1,0 +1,17 @@
+mqtt:
+  enabled: False
+
+cameras:
+  tapo_kamera_ornek:
+    ffmpeg:
+      inputs:
+        - path: rtsp://kamera_kullanici_adi:kamera_sifresi@KAMERA_IP_ADRESI:554/stream1
+          roles:
+            - detect
+            - record
+    detect:
+      enabled: True
+    record:
+      enabled: True
+      retain:
+        days: 7
