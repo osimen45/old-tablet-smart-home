@@ -1,0 +1,8 @@
+# Home Assistant gizli dosyalarını koru
+config/homeassistant/
+config/frigate.yml
+
+# İşletim sistemi ve geçici dosyalar
+.DS_Store
+Thumbs.db
+*.log
